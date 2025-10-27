@@ -1,0 +1,84 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <group android:translateX="54" android:translateY="54">
+        <!-- Broken wall pieces (brick pattern) -->
+        <!-- Left wall section -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.3"
+            android:pathData="M-30,-20l0,8l8,0l0,-8z"/>
+        <path
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.3"
+            android:pathData="M-20,-20l0,8l8,0l0,-8z"/>
+        <path
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.3"
+            android:pathData="M-30,-10l0,8l8,0l0,-8z"/>
+        <path
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.3"
+            android:pathData="M-20,-10l0,8l8,0l0,-8z"/>
+
+        <path
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.3"
+            android:pathData="M-30,2l0,8l8,0l0,-8z"/>
+        <path
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.3"
+            android:pathData="M-20,2l0,8l8,0l0,-8z"/>
+        <path
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.3"
+            android:pathData="M-30,12l0,8l8,0l0,-8z"/>
+        <path
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.3"
+            android:pathData="M-20,12l0,8l8,0l0,-8z"/>
+
+        <!-- Right wall section -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.3"
+            android:pathData="M12,-20l0,8l8,0l0,-8z"/>
+        <path
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.3"
+            android:pathData="M22,-20l0,8l8,0l0,-8z"/>
+        <path
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.3"
+            android:pathData="M12,-10l0,8l8,0l0,-8z"/>
+        <path
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.3"
+            android:pathData="M22,-10l0,8l8,0l0,-8z"/>
+
+        <path
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.3"
+            android:pathData="M12,2l0,8l8,0l0,-8z"/>
+        <path
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.3"
+            android:pathData="M22,2l0,8l8,0l0,-8z"/>
+        <path
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.3"
+            android:pathData="M12,12l0,8l8,0l0,-8z"/>
+        <path
+            android:fillColor="#FFFFFF"
+            android:fillAlpha="0.3"
+            android:pathData="M22,12l0,8l8,0l0,-8z"/>
+
+        <!-- Big share arrow going through the gap -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M-8,0l16,-12l0,8l12,0l0,8l-12,0l0,8z"/>
+    </group>
+</vector>
