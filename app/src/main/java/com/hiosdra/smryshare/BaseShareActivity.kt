@@ -53,6 +53,5 @@ abstract class BaseShareActivity : ComponentActivity() {
      * Build the target URL for the specific service.
      * Subclasses must implement this to define their URL format.
      */
-    protected abstract fun buildTargetUrl(url: String): String
+    internal abstract fun buildTargetUrl(url: String): String
 }
-
