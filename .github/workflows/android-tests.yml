@@ -1,5 +1,7 @@
 name: Android Tests
 
+# https://github.com/marketplace/actions/android-emulator-runner#configurations
+
 on:
   pull_request:
     branches:
@@ -22,4 +24,5 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
+          arch: x86_64
           script: ./gradlew connectedCheck
