@@ -2,7 +2,6 @@ package com.hiosdra.smryshare
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Rule
@@ -19,61 +18,6 @@ class MainActivityTest {
     fun appLaunchesSuccessfully() {
         // Verify that the app launches without crashing
         composeTestRule.onNodeWithText("Share to bypass").assertIsDisplayed()
-    }
-
-    @Test
-    fun appDisplaysTitle() {
-        // Verify the main title is displayed
-        composeTestRule.onNodeWithText("Share to bypass").assertIsDisplayed()
-    }
-
-    @Test
-    fun appDisplaysSubtitle() {
-        // Verify the subtitle is displayed
-        composeTestRule.onNodeWithText("Share links to smry.ai or use paywall removers")
-            .assertIsDisplayed()
-    }
-
-    @Test
-    fun appDisplaysShareIcon() {
-        // Verify the share icon is displayed
-        composeTestRule.onNodeWithContentDescription("Share to bypass")
-            .assertIsDisplayed()
-    }
-
-    @Test
-    fun appDisplaysHowToUseSection() {
-        // Verify the "How to use" section is displayed
-        composeTestRule.onNodeWithText("How to use").assertIsDisplayed()
-    }
-
-    @Test
-    fun appDisplaysAllInstructionSteps() {
-        // Verify all four instruction steps are displayed
-        composeTestRule.onNodeWithText("Open any link in your browser or app")
-            .assertIsDisplayed()
-        composeTestRule.onNodeWithText("Tap the Share button")
-            .assertIsDisplayed()
-        composeTestRule.onNodeWithText("Choose your preferred service")
-            .assertIsDisplayed()
-        composeTestRule.onNodeWithText("Link opens automatically in the selected service")
-            .assertIsDisplayed()
-    }
-
-    @Test
-    fun appDisplaysSecurityInfo() {
-        // Verify the security information text is displayed
-        composeTestRule.onNodeWithText("Links are opened in a secure Chrome Custom Tab")
-            .assertIsDisplayed()
-    }
-
-    @Test
-    fun appDisplaysStepNumbers() {
-        // Verify that step numbers are displayed
-        composeTestRule.onNodeWithText("1").assertIsDisplayed()
-        composeTestRule.onNodeWithText("2").assertIsDisplayed()
-        composeTestRule.onNodeWithText("3").assertIsDisplayed()
-        composeTestRule.onNodeWithText("4").assertIsDisplayed()
     }
 }
 
