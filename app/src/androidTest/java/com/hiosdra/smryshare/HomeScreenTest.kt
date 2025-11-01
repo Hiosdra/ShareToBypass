@@ -16,34 +16,32 @@ class HomeScreenTest {
     val composeTestRule = createComposeRule()
 
     @Test
-    fun homeScreen_displaysAllComponents() {
-        // Given the home screen
+    fun homeScreen_displaysAllContentCorrectly() {
         composeTestRule.setContent {
             ShareToBypassTheme {
                 HomeScreen()
             }
         }
 
-        // Then verify all main components are displayed
+        // Main components
         composeTestRule.onNodeWithText("Share to bypass").assertIsDisplayed()
         composeTestRule.onNodeWithText("Share links to smry.ai or use paywall removers").assertIsDisplayed()
         composeTestRule.onNodeWithText("How to use").assertIsDisplayed()
-    }
 
-    @Test
-    fun homeScreen_displaysInstructions() {
-        // Given the home screen
-        composeTestRule.setContent {
-            ShareToBypassTheme {
-                HomeScreen()
-            }
-        }
-
-        // Then verify all instruction steps are visible
+        // Instructions
         composeTestRule.onNodeWithText("Open any link in your browser or app").assertIsDisplayed()
         composeTestRule.onNodeWithText("Tap the Share button").assertIsDisplayed()
         composeTestRule.onNodeWithText("Choose your preferred service").assertIsDisplayed()
         composeTestRule.onNodeWithText("Link opens automatically in the selected service").assertIsDisplayed()
+
+        // Step numbers
+        for (i in 1..4) {
+            composeTestRule.onNodeWithText(i.toString()).assertIsDisplayed()
+        }
+
+        // Security message
+        composeTestRule.onNodeWithText("Links are opened in a secure Chrome Custom Tab")
+            .assertIsDisplayed()
     }
 
     @Test
@@ -58,35 +56,6 @@ class HomeScreenTest {
         // Then verify both number and text are displayed
         composeTestRule.onNodeWithText("1").assertIsDisplayed()
         composeTestRule.onNodeWithText("Test instruction").assertIsDisplayed()
-    }
-
-    @Test
-    fun instructionStep_displaysMultipleSteps() {
-        // Given multiple instruction steps
-        composeTestRule.setContent {
-            ShareToBypassTheme {
-                HomeScreen()
-            }
-        }
-
-        // Then verify each step number is displayed
-        for (i in 1..4) {
-            composeTestRule.onNodeWithText(i.toString()).assertIsDisplayed()
-        }
-    }
-
-    @Test
-    fun homeScreen_displaysSecurityMessage() {
-        // Given the home screen
-        composeTestRule.setContent {
-            ShareToBypassTheme {
-                HomeScreen()
-            }
-        }
-
-        // Then verify security message is displayed
-        composeTestRule.onNodeWithText("Links are opened in a secure Chrome Custom Tab")
-            .assertIsDisplayed()
     }
 }
 
