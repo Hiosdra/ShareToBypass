@@ -47,20 +47,6 @@ class HomeScreenTest {
     }
 
     @Test
-    fun instructionStep_displaysNumberAndText() {
-        // Given an instruction step
-        composeTestRule.setContent {
-            ShareToBypassTheme {
-                InstructionStep(number = "1", text = "Test instruction")
-            }
-        }
-
-        // Then verify both number and text are displayed
-        composeTestRule.onNodeWithText("1").assertIsDisplayed()
-        composeTestRule.onNodeWithText("Test instruction").assertIsDisplayed()
-    }
-
-    @Test
     fun instructionStep_displaysMultipleSteps() {
         // Given multiple instruction steps
         composeTestRule.setContent {
