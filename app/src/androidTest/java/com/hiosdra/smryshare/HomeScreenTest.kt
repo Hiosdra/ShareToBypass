@@ -15,6 +15,10 @@ class HomeScreenTest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
+    companion object {
+        private const val INSTRUCTION_STEPS_COUNT = 4
+    }
+
     @Test
     fun homeScreen_displaysAllContentCorrectly() {
         composeTestRule.setContent {
@@ -35,7 +39,7 @@ class HomeScreenTest {
         composeTestRule.onNodeWithText("Link opens automatically in the selected service").assertIsDisplayed()
 
         // Step numbers
-        for (i in 1..4) {
+        for (i in 1..INSTRUCTION_STEPS_COUNT) {
             composeTestRule.onNodeWithText(i.toString()).assertIsDisplayed()
         }
 
