@@ -17,7 +17,7 @@ class ShareToBypassAppTest {
     val composeTestRule = createComposeRule()
 
     @Test
-    fun app_displaysCorrectTheme() {
+    fun shareToBypassApp_displaysAllContentCorrectly() {
         // Given the app with theme
         composeTestRule.setContent {
             ShareToBypassTheme {
@@ -27,32 +27,12 @@ class ShareToBypassAppTest {
 
         // Then verify main content is displayed with proper styling
         composeTestRule.onNodeWithText("Share to bypass").assertIsDisplayed()
-    }
-
-    @Test
-    fun app_hasProperContentLayout() {
-        // Given the app
-        composeTestRule.setContent {
-            ShareToBypassTheme {
-                ShareToBypassApp()
-            }
-        }
-
-        // Then verify layout structure
+        
+        // And verify layout structure
         composeTestRule.onNodeWithContentDescription("Share to bypass").assertIsDisplayed()
         composeTestRule.onNodeWithText("How to use").assertIsDisplayed()
-    }
-
-    @Test
-    fun app_displaysAllFourInstructionStepsInOrder() {
-        // Given the app
-        composeTestRule.setContent {
-            ShareToBypassTheme {
-                ShareToBypassApp()
-            }
-        }
-
-        // Then verify all steps exist
+        
+        // And verify all four instruction steps are displayed in order
         val steps = listOf(
             "Open any link in your browser or app",
             "Tap the Share button",
@@ -88,17 +68,5 @@ class ShareToBypassAppTest {
         }
     }
 
-    @Test
-    fun shareToBypassApp_rendersWithoutCrashing() {
-        // When rendering the full app
-        composeTestRule.setContent {
-            ShareToBypassTheme {
-                ShareToBypassApp()
-            }
-        }
-
-        // Then verify it renders without crashing
-        composeTestRule.onNodeWithText("Share to bypass").assertIsDisplayed()
-    }
 }
 
