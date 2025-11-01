@@ -1,5 +1,7 @@
 name: Android Tests
 
+# https://github.com/marketplace/actions/android-emulator-runner#configurations
+
 on:
   pull_request:
     branches:
