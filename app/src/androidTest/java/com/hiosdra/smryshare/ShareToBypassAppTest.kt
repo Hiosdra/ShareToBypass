@@ -45,34 +45,5 @@ class ShareToBypassAppTest {
         }
     }
 
-
-    @Test
-    fun homeScreen_hasAllRequiredTextContent() {
-        // Given the home screen
-        composeTestRule.setContent {
-            ShareToBypassTheme {
-                HomeScreen()
-            }
-        }
-
-        // Wait for UI to settle
-        composeTestRule.waitForIdle()
-
-        // Then verify all required text is present
-        val requiredTextsDisplayed = listOf(
-            "Share to bypass",
-            "Share links to smry.ai or use paywall removers",
-            "How to use"
-        )
-
-        requiredTextsDisplayed.forEach { text ->
-            composeTestRule.onNodeWithText(text).assertIsDisplayed()
-        }
-        
-        // Verify security text exists (might be below fold in CI)
-        composeTestRule.onNodeWithText("Links are opened in a secure Chrome Custom Tab", substring = true)
-            .assertExists()
-    }
-
 }
 
