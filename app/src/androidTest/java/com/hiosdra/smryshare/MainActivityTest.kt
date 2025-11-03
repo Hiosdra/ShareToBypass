@@ -44,14 +44,13 @@ class MainActivityTest {
     @Test
     fun appDisplaysAllInstructionSteps() {
         // Verify all four instruction steps are displayed
-        composeTestRule.onNodeWithText("Open any link in your browser or app")
-            .assertIsDisplayed()
-        composeTestRule.onNodeWithText("Tap the Share button")
-            .assertIsDisplayed()
-        composeTestRule.onNodeWithText("Choose your preferred service")
-            .assertIsDisplayed()
-        composeTestRule.onNodeWithText("Link opens automatically in the selected service")
-            .assertIsDisplayed()
+        val instructions = listOf(
+            "Open any link in your browser or app",
+            "Tap the Share button",
+            "Choose your preferred service",
+            "Link opens automatically in the selected service"
+        )
+        instructions.forEach { composeTestRule.onNodeWithText(it).assertIsDisplayed() }
     }
 
     @Test
