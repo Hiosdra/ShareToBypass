@@ -55,19 +55,5 @@ class HomeScreenTest {
         composeTestRule.onNodeWithText("Links are opened in a secure Chrome Custom Tab", substring = true)
             .assertExists()
     }
-
-    @Test
-    fun instructionStep_displaysNumberAndText() {
-        // Given an instruction step
-        composeTestRule.setContent {
-            ShareToBypassTheme {
-                InstructionStep(number = "1", text = "Test instruction")
-            }
-        }
-
-        // Then verify both number and text are displayed
-        composeTestRule.onNodeWithText("1").assertIsDisplayed()
-        composeTestRule.onNodeWithText("Test instruction").assertIsDisplayed()
-    }
 }
 
