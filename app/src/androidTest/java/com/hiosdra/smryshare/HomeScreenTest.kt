@@ -36,10 +36,15 @@ class HomeScreenTest {
         composeTestRule.onNodeWithText("How to use").assertIsDisplayed()
 
         // Instructions
-        composeTestRule.onNodeWithText("Open any link in your browser or app").assertIsDisplayed()
-        composeTestRule.onNodeWithText("Tap the Share button").assertIsDisplayed()
-        composeTestRule.onNodeWithText("Choose your preferred service").assertIsDisplayed()
-        composeTestRule.onNodeWithText("Link opens automatically in the selected service").assertIsDisplayed()
+        val instructionTexts = listOf(
+            "Open any link in your browser or app",
+            "Tap the Share button",
+            "Choose your preferred service",
+            "Link opens automatically in the selected service"
+        )
+        instructionTexts.forEach { text ->
+            composeTestRule.onNodeWithText(text).assertIsDisplayed()
+        }
 
         // Step numbers
         for (i in 1..INSTRUCTION_STEPS_COUNT) {
