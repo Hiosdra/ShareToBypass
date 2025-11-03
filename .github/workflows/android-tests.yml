@@ -34,4 +34,5 @@ jobs:
         with:
           api-level: 29
           arch: x86_64
+          disable-animations: true
           script: ./gradlew connectedCheck
