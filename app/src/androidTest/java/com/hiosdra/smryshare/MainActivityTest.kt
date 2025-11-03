@@ -17,13 +17,7 @@ class MainActivityTest {
 
     @Test
     fun appLaunchesSuccessfully() {
-        // Verify that the app launches without crashing
-        composeTestRule.onNodeWithText("Share to bypass").assertIsDisplayed()
-    }
-
-    @Test
-    fun appDisplaysTitle() {
-        // Verify the main title is displayed
+        // Verify that the app launches without crashing and displays the title
         composeTestRule.onNodeWithText("Share to bypass").assertIsDisplayed()
     }
 
