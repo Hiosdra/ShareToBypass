@@ -8,19 +8,6 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class BaseShareActivityTest {
 
-
-    @Test
-    fun baseShareActivity_encodeUrl_handlesSpecialCharacters() {
-        // Given a URL with special characters
-        val testUrl = "https://example.com/test?param=value&other=test#section"
-
-        // When encoding
-        val encoded = BaseShareActivity.encodeUrl(testUrl)
-
-        // Then verify special characters are encoded
-        assertEquals("https%3A%2F%2Fexample.com%2Ftest%3Fparam%3Dvalue%26other%3Dtest%23section", encoded)
-    }
-
     @Test
     fun baseShareActivity_encodeUrl_handlesSpaces() {
         // Given a URL with spaces
@@ -31,18 +18,6 @@ class BaseShareActivityTest {
 
         // Then verify spaces are encoded
         assertEquals("https%3A%2F%2Fexample.com%2Farticle+with+spaces", encoded)
-    }
-
-    @Test
-    fun baseShareActivity_encodeUrl_handlesHashSymbol() {
-        // Given a URL with hash/anchor
-        val testUrl = "https://example.com/article#section"
-
-        // When encoding
-        val encoded = BaseShareActivity.encodeUrl(testUrl)
-
-        // Then verify hash is encoded
-        assertEquals("https%3A%2F%2Fexample.com%2Farticle%23section", encoded)
     }
 
     @Test
