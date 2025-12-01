@@ -5,80 +5,17 @@
     android:viewportHeight="108">
 
     <group android:translateX="54" android:translateY="54">
-        <!-- Broken wall pieces (brick pattern) -->
-        <!-- Left wall section -->
+        <!-- Punch-through arrow mark -->
         <path
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.3"
-            android:pathData="M-30,-20l0,8l8,0l0,-8z"/>
-        <path
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.3"
-            android:pathData="M-20,-20l0,8l8,0l0,-8z"/>
-        <path
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.3"
-            android:pathData="M-30,-10l0,8l8,0l0,-8z"/>
-        <path
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.3"
-            android:pathData="M-20,-10l0,8l8,0l0,-8z"/>
+            android:fillColor="#F8FAFF"
+            android:pathData="M-12,-8h22v-11l22,20l-22,20v-11h-22c-8,0 -13,6 -13,13v-9c0,-12 9,-22 13,-22z" />
 
+        <!-- Accent bolt along split -->
         <path
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.3"
-            android:pathData="M-30,2l0,8l8,0l0,-8z"/>
-        <path
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.3"
-            android:pathData="M-20,2l0,8l8,0l0,-8z"/>
-        <path
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.3"
-            android:pathData="M-30,12l0,8l8,0l0,-8z"/>
-        <path
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.3"
-            android:pathData="M-20,12l0,8l8,0l0,-8z"/>
-
-        <!-- Right wall section -->
-        <path
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.3"
-            android:pathData="M12,-20l0,8l8,0l0,-8z"/>
-        <path
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.3"
-            android:pathData="M22,-20l0,8l8,0l0,-8z"/>
-        <path
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.3"
-            android:pathData="M12,-10l0,8l8,0l0,-8z"/>
-        <path
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.3"
-            android:pathData="M22,-10l0,8l8,0l0,-8z"/>
-
-        <path
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.3"
-            android:pathData="M12,2l0,8l8,0l0,-8z"/>
-        <path
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.3"
-            android:pathData="M22,2l0,8l8,0l0,-8z"/>
-        <path
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.3"
-            android:pathData="M12,12l0,8l8,0l0,-8z"/>
-        <path
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.3"
-            android:pathData="M22,12l0,8l8,0l0,-8z"/>
-
-        <!-- Big share arrow going through the gap -->
-        <path
-            android:fillColor="#FFFFFF"
-            android:pathData="M-8,0l16,-12l0,8l12,0l0,8l-12,0l0,8z"/>
+            android:strokeColor="#22D3EE"
+            android:strokeWidth="5"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:pathData="M-26,-24l14,14l-12,14l14,14l-10,14" />
     </group>
 </vector>
