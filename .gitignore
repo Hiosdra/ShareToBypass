@@ -8,3 +8,17 @@
 .cxx
 local.properties
 /.idea/
+
+# Signing files - never commit these!
+*.jks
+*.keystore
+*-keystore.jks
+service-account.json
+release-keystore.jks
+
+# Release builds
+app-release.aab
+
+# Auto-generated What's New notes
+whatsnew/whatsnew-*
+
