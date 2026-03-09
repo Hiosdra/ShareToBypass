@@ -12,19 +12,31 @@ android {
         applicationId = "com.hiosdra.smryshare"
         minSdk = 29
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            // Signing configuration will be provided via command line or gradle.properties
+            storeFile = project.findProperty("android.injected.signing.store.file")?.toString()?.let { file(it) }
+            storePassword = project.findProperty("android.injected.signing.store.password")?.toString()
+            keyAlias = project.findProperty("android.injected.signing.key.alias")?.toString()
+            keyPassword = project.findProperty("android.injected.signing.key.password")?.toString()
+        }
+    }
+
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     compileOptions {
