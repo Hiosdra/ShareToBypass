@@ -1,58 +1,58 @@
-# GitHub Actions - Release do Google Play
+# GitHub Actions - Release to Google Play
 
-Ten workflow automatycznie buduje i publikuje aplikację na Google Play Console po utworzeniu GitHub Release.
+This workflow automatically builds and publishes the app to Google Play Console after creating a GitHub Release.
 
-## ✨ Jak to działa
+## ✨ How it Works
 
-Workflow uruchamia się automatycznie gdy tworzysz nowy Release w GitHub. Pobiera:
-- **Wersję aplikacji** z tagu release (np. `v1.2.3` → versionName: `1.2.3`)
-- **Opis zmian (What's New)** z treści release notes
-- **Track wydania** na podstawie tagu i typu release (prerelease/normal)
+The workflow runs automatically when you create a new Release on GitHub. It retrieves:
+- **App version** from the release tag (e.g., `v1.2.3` → versionName: `1.2.3`)
+- **Change description (What's New)** from release notes content
+- **Release track** based on the tag and release type (prerelease/normal)
 
-## Wymagane GitHub Secrets
+## Required GitHub Secrets
 
-Aby workflow działał poprawnie, musisz skonfigurować następujące sekrety w ustawieniach repozytorium (Settings → Secrets and variables → Actions):
+For the workflow to work correctly, you must configure the following secrets in repository settings (Settings → Secrets and variables → Actions):
 
 ### 1. `KEYSTORE_BASE64`
-Keystore zakodowany w base64. Aby go uzyskać:
+Keystore encoded in base64. To obtain it:
 ```bash
 base64 -i your-release-keystore.jks | pbcopy
 ```
-Wklej wynik do GitHub Secret.
+Paste the result into GitHub Secret.
 
 ### 2. `KEYSTORE_PASSWORD`
-Hasło do keystore.
+Keystore password.
 
 ### 3. `KEY_ALIAS`
-Alias klucza w keystore.
+Key alias in keystore.
 
 ### 4. `KEY_PASSWORD`
-Hasło do klucza.
+Key password.
 
 ### 5. `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON`
-JSON z Google Play Console Service Account. Aby go uzyskać:
+JSON from Google Play Console Service Account. To obtain it:
 
-1. Przejdź do [Google Play Console](https://play.google.com/console)
-2. Wybierz swoją aplikację
-3. Przejdź do **Setup → API access**
-4. Utwórz nowy Service Account lub użyj istniejącego
-5. Nadaj mu uprawnienia "Release Manager" lub "Admin"
-6. Pobierz klucz JSON
-7. Skopiuj całą zawartość pliku JSON i wklej jako GitHub Secret
+1. Go to [Google Play Console](https://play.google.com/console)
+2. Select your app
+3. Go to **Setup → API access**
+4. Create a new Service Account or use an existing one
+5. Grant it "Release Manager" or "Admin" permissions
+6. Download the JSON key
+7. Copy the entire JSON file content and paste it as a GitHub Secret
 
-## Jak używać
+## How to Use
 
-### Tworzenie Release (Zalecane)
+### Creating a Release (Recommended)
 
-1. **Przejdź do repozytorium na GitHub**
+1. **Go to the repository on GitHub**
 
-2. **Kliknij "Releases" → "Create a new release"**
+2. **Click "Releases" → "Create a new release"**
 
-3. **Ustaw tag:**
+3. **Set the tag:**
    - Format: `v1.0.0`, `v1.0.0-alpha`, `v1.0.0-beta`, `v1.0.0-internal`
-   - Tag określa wersję aplikacji i track wydania
+   - The tag determines the app version and release track
 
-4. **Napisz Release notes:**
+4. **Write Release notes:**
    
    Simple format (English):
    ```
@@ -61,13 +61,13 @@ JSON z Google Play Console Service Account. Aby go uzyskać:
    - Improved performance
    ```
 
-5. **Wybierz typ release:**
-   - ✅ **Normal release** → automatycznie idzie do `production` (lub track z tagu)
-   - ☑️ **Pre-release** → automatycznie idzie do `beta` (lub track z tagu)
+5. **Choose release type:**
+   - ✅ **Normal release** → automatically goes to `production` (or track from tag)
+   - ☑️ **Pre-release** → automatically goes to `beta` (or track from tag)
 
-6. **Kliknij "Publish release"** - Workflow uruchomi się automatycznie!
+6. **Click "Publish release"** - The workflow will start automatically!
 
-### Automatyczny wybór track:
+### Automatic track selection:
 
 | Tag | Pre-release | Track |
 |-----|-------------|-------|
@@ -77,13 +77,13 @@ JSON z Google Play Console Service Account. Aby go uzyskać:
 | `v1.0.0-beta` | — | beta |
 | `v1.0.0-internal` | — | internal |
 
-### Manualne uruchomienie (opcjonalne)
+### Manual Execution (Optional)
 
-1. Przejdź do zakładki **Actions** w repozytorium
-2. Wybierz workflow "Release to Google Play"
-3. Kliknij **Run workflow**
-4. Podaj tag release i wybierz track
-5. Kliknij **Run workflow**
+1. Go to the **Actions** tab in the repository
+2. Select the "Release to Google Play" workflow
+3. Click **Run workflow**
+4. Provide the release tag and select the track
+5. Click **Run workflow**
 
 ## What's New Notes
 
@@ -104,70 +104,70 @@ The workflow will automatically:
 
 **Maximum length:** 500 characters (automatically truncated)
 
-## Wersjonowanie
+## Versioning
 
-- **`versionCode`** - automatycznie ustawiany na numer uruchomienia GitHub Actions
-- **`versionName`** - automatycznie pobierany z tagu release (np. `v1.2.3` → `1.2.3`)
+- **`versionCode`** - automatically set to the GitHub Actions run number
+- **`versionName`** - automatically retrieved from the release tag (e.g., `v1.2.3` → `1.2.3`)
 
-Nie musisz ręcznie edytować `build.gradle.kts`! Workflow zrobi to za Ciebie.
+You don't need to manually edit `build.gradle.kts`! The workflow will do it for you.
 
 ## Troubleshooting
 
-### Błąd "Package not found"
-Upewnij się, że aplikacja została już raz ręcznie załadowana do Google Play Console.
+### "Package not found" Error
+Make sure the app has been manually uploaded to Google Play Console at least once.
 
-### Błąd z podpisywaniem
-Sprawdź czy wszystkie sekrety (KEYSTORE_*, KEY_*) są poprawnie ustawione.
+### Signing Error
+Check that all secrets (KEYSTORE_*, KEY_*) are correctly set.
 
-### Błąd z Service Account
-Upewnij się, że Service Account ma odpowiednie uprawnienia w Google Play Console.
+### Service Account Error
+Make sure the Service Account has appropriate permissions in Google Play Console.
 
-## 🚀 Przykład: Pierwszy Release
+## 🚀 Example: First Release
 
-### Krok po kroku:
+### Step by Step:
 
-1. **Commituj i wypychaj zmiany:**
+1. **Commit and push changes:**
    ```bash
    git add .
-   git commit -m "Przygotowanie do wersji 1.0.0"
+   git commit -m "Preparation for version 1.0.0"
    git push origin main
    ```
 
-2. **Przejdź do GitHub → Releases → Create a new release**
+2. **Go to GitHub → Releases → Create a new release**
 
-3. **Wypełnij formularz:**
-   - **Choose a tag:** `v1.0.0` (utwórz nowy tag)
-   - **Release title:** `Version 1.0.0` (opcjonalne)
+3. **Fill out the form:**
+   - **Choose a tag:** `v1.0.0` (create new tag)
+   - **Release title:** `Version 1.0.0` (optional)
    - **Describe this release:**
      ```markdown
      - First version of the app
      - Basic ShareToBypass functionality
      - Content sharing support
      ```
-   - **Pre-release:** ❌ (zostaw niezaznaczone dla production)
+   - **Pre-release:** ❌ (leave unchecked for production)
 
-4. **Kliknij "Publish release"**
+4. **Click "Publish release"**
 
-5. **Sprawdź status:**
-   - Przejdź do zakładki **Actions**
-   - Poczekaj aż workflow się zakończy (ok. 5-10 minut)
-   - Sprawdź Google Play Console czy aplikacja się pojawiła
+5. **Check status:**
+   - Go to the **Actions** tab
+   - Wait for the workflow to complete (about 5-10 minutes)
+   - Check Google Play Console to see if the app appeared
 
-### Następne wersje:
+### Next Versions:
 
-Dla wersji beta/alpha:
+For beta/alpha versions:
 ```bash
 # Tag: v1.1.0-beta
-# Pre-release: ✅ lub użyj tagu z -beta/-alpha
+# Pre-release: ✅ or use tag with -beta/-alpha
 ```
 
-Dla wersji production:
+For production versions:
 ```bash
 # Tag: v1.1.0
 # Pre-release: ❌
 ```
 
-## 📖 Dodatkowe zasoby
+## 📖 Additional Resources
 
 - [GitHub Releases Documentation](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
 - [Google Play Console Help](https://support.google.com/googleplay/android-developer/)
