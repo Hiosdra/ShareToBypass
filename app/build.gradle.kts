@@ -18,13 +18,16 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    signingConfigs {
-        create("release") {
-            // Signing configuration will be provided via command line or gradle.properties
-            storeFile = project.findProperty("android.injected.signing.store.file")?.toString()?.let { file(it) }
-            storePassword = project.findProperty("android.injected.signing.store.password")?.toString()
-            keyAlias = project.findProperty("android.injected.signing.key.alias")?.toString()
-            keyPassword = project.findProperty("android.injected.signing.key.password")?.toString()
+    val hasSigningProps = project.hasProperty("android.injected.signing.store.file")
+
+    if (hasSigningProps) {
+        signingConfigs {
+            create("release") {
+                storeFile = file(project.property("android.injected.signing.store.file").toString())
+                storePassword = project.property("android.injected.signing.store.password").toString()
+                keyAlias = project.property("android.injected.signing.key.alias").toString()
+                keyPassword = project.property("android.injected.signing.key.password").toString()
+            }
         }
     }
 
@@ -36,7 +39,9 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName("release")
+            if (hasSigningProps) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
     }
     compileOptions {
