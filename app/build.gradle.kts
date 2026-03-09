@@ -12,19 +12,36 @@ android {
         applicationId = "com.hiosdra.smryshare"
         minSdk = 29
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    val hasSigningProps = project.hasProperty("android.injected.signing.store.file")
+
+    if (hasSigningProps) {
+        signingConfigs {
+            create("release") {
+                storeFile = file(project.property("android.injected.signing.store.file").toString())
+                storePassword = project.property("android.injected.signing.store.password").toString()
+                keyAlias = project.property("android.injected.signing.key.alias").toString()
+                keyPassword = project.property("android.injected.signing.key.password").toString()
+            }
+        }
+    }
+
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            if (hasSigningProps) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
     }
     compileOptions {
