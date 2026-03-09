@@ -171,4 +171,3 @@ Dla wersji production:
 
 - [GitHub Releases Documentation](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
 - [Google Play Console Help](https://support.google.com/googleplay/android-developer/)
-- [Szablon Release Notes](.github/RELEASE_NOTES_TEMPLATE.md)
