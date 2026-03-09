@@ -122,7 +122,7 @@ jobs:
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
           ./gradlew bundleRelease \
-            -Pandroid.injected.signing.store.file=release-keystore.jks \
+            -Pandroid.injected.signing.store.file=$GITHUB_WORKSPACE/app/release-keystore.jks \
             -Pandroid.injected.signing.store.password=$KEYSTORE_PASSWORD \
             -Pandroid.injected.signing.key.alias=$KEY_ALIAS \
             -Pandroid.injected.signing.key.password=$KEY_PASSWORD
