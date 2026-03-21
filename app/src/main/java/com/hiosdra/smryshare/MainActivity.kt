@@ -61,6 +61,7 @@ fun ShareToBypassApp() {
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
     val context = LocalContext.current
+    val privacyPolicyUrl = stringResource(id = R.string.privacy_policy_url)
 
     Surface(
         modifier = modifier.fillMaxSize(),
@@ -184,7 +185,6 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                     .fillMaxWidth()
                     .clickable(
                         onClick = {
-                            val privacyPolicyUrl = context.getString(R.string.privacy_policy_url)
                             context.openInCustomTab(privacyPolicyUrl)
                         },
                         role = Role.Button
