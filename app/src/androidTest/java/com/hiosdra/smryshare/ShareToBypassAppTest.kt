@@ -4,7 +4,10 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.hiosdra.smryshare.onboarding.OnboardingPreferences
+import com.hiosdra.smryshare.onboarding.OnboardingViewModel
 import com.hiosdra.smryshare.ui.theme.ShareToBypassTheme
 import org.junit.Rule
 import org.junit.Test
@@ -18,10 +21,18 @@ class ShareToBypassAppTest {
 
     @Test
     fun shareToBypassApp_displaysAllContentCorrectly() {
+        val viewModel = OnboardingViewModel()
+        val preferences = OnboardingPreferences(ApplicationProvider.getApplicationContext())
+        // Mark onboarding as completed so it doesn't show during test
+        preferences.setOnboardingCompleted()
+
         // Given the app with theme
         composeTestRule.setContent {
             ShareToBypassTheme {
-                ShareToBypassApp()
+                ShareToBypassApp(
+                    onboardingViewModel = viewModel,
+                    onboardingPreferences = preferences
+                )
             }
         }
 
