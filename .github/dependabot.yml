@@ -8,6 +8,28 @@ updates:
     labels:
       - "dependencies"
     rebase-strategy: auto
+    groups:
+      androidx:
+        patterns:
+          - "androidx.*"
+        exclude-patterns:
+          - "androidx.compose*"
+      compose:
+        patterns:
+          - "androidx.compose*"
+      kotlin:
+        patterns:
+          - "org.jetbrains.kotlin*"
+          - "kotlin-*"
+      testing:
+        patterns:
+          - "junit*"
+          - "*junit*"
+          - "*espresso*"
+          - "*test*"
+      build-tools:
+        patterns:
+          - "com.android.*"
 
   # GitHub Actions
   - package-ecosystem: "github-actions"
