@@ -20,7 +20,7 @@ When you download this app from Google Play, Google may automatically collect ce
 - Installation data
 - Crash reports (if enabled in your device settings)
 
-This data collection is handled entirely by Google Play and is subject to [Google's Privacy Policy](https://policies.google.com/privacy). We do not have access to or control over this data.
+This data collection is handled entirely by Google Play and is subject to [Google's Privacy Policy](https://policies.google.com/privacy).
 
 ## Permissions
 
