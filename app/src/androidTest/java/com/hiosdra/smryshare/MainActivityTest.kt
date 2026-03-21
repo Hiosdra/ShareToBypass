@@ -4,13 +4,27 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.hiosdra.smryshare.onboarding.OnboardingPreferences
+import org.junit.BeforeClass
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class MainActivityTest {
+
+    companion object {
+        @JvmStatic
+        @BeforeClass
+        fun setupClass() {
+            // Mark onboarding as completed before any tests run
+            // This ensures the preference is set before MainActivity is created
+            val preferences = OnboardingPreferences(ApplicationProvider.getApplicationContext())
+            preferences.setOnboardingCompleted()
+        }
+    }
 
     @get:Rule
     val composeTestRule = createAndroidComposeRule<MainActivity>()
