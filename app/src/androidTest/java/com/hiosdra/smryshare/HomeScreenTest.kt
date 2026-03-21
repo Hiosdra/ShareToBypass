@@ -3,6 +3,7 @@ package com.hiosdra.smryshare
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.hiosdra.smryshare.ui.theme.ShareToBypassTheme
 import org.junit.Rule
@@ -54,6 +55,40 @@ class HomeScreenTest {
         // Security message - check if exists but don't require it to be displayed (might be below fold)
         composeTestRule.onNodeWithText("Links are opened in a secure Chrome Custom Tab", substring = true)
             .assertExists()
+    }
+
+    @Test
+    fun homeScreen_privacyPolicyLinkIsDisplayed() {
+        composeTestRule.setContent {
+            ShareToBypassTheme {
+                HomeScreen()
+            }
+        }
+
+        // Wait for UI to settle
+        composeTestRule.waitForIdle()
+
+        // Verify privacy policy link is present
+        composeTestRule.onNodeWithText("Privacy Policy")
+            .assertExists()
+            .assertIsDisplayed()
+    }
+
+    @Test
+    fun homeScreen_privacyPolicyLinkIsClickable() {
+        composeTestRule.setContent {
+            ShareToBypassTheme {
+                HomeScreen()
+            }
+        }
+
+        // Wait for UI to settle
+        composeTestRule.waitForIdle()
+
+        // Verify privacy policy link can be clicked (this will not actually open the Custom Tab in tests)
+        composeTestRule.onNodeWithText("Privacy Policy")
+            .assertExists()
+            .performClick()
     }
 }
 

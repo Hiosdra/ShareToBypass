@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.browser.customtabs.CustomTabsIntent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -32,12 +31,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.net.toUri
 import com.hiosdra.smryshare.ui.theme.ShareToBypassTheme
 
 class MainActivity : ComponentActivity() {
@@ -181,13 +180,16 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 color = MaterialTheme.colorScheme.primary,
                 textAlign = TextAlign.Center,
                 textDecoration = TextDecoration.Underline,
-                modifier = Modifier.clickable {
-                    val privacyPolicyUrl = context.getString(R.string.privacy_policy_url)
-                    CustomTabsIntent.Builder()
-                        .setShowTitle(true)
-                        .build()
-                        .launchUrl(context, privacyPolicyUrl.toUri())
-                }
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable(
+                        onClick = {
+                            val privacyPolicyUrl = context.getString(R.string.privacy_policy_url)
+                            context.openInCustomTab(privacyPolicyUrl)
+                        },
+                        role = Role.Button
+                    )
+                    .padding(vertical = 12.dp)
             )
         }
     }
