@@ -8,6 +8,8 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.hiosdra.smryshare.ui.theme.ShareToBypassTheme
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -67,6 +69,11 @@ class OnboardingTest {
         viewModel.startOnboarding()
 
         viewModel.nextStep()
+
+        // Wait for the StateFlow to update
+        runBlocking {
+            viewModel.currentStep.first { it.stepNumber == 2 }
+        }
 
         assertEquals(1, viewModel.currentStepIndex.value)
         assertEquals(2, viewModel.currentStep.value.stepNumber)
