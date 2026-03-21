@@ -43,6 +43,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hiosdra.smryshare.onboarding.OnboardingOverlay
 import com.hiosdra.smryshare.onboarding.OnboardingPreferences
+import com.hiosdra.smryshare.onboarding.OnboardingSteps
 import com.hiosdra.smryshare.onboarding.OnboardingViewModel
 import com.hiosdra.smryshare.ui.theme.ShareToBypassTheme
 
@@ -88,8 +89,12 @@ fun ShareToBypassApp(
 
             // Show onboarding overlay if active
             if (isOnboardingActive) {
+                // Derive the current step from the observed state to ensure recomposition
+                val steps = OnboardingSteps.getAllSteps()
+                val currentStep = steps[currentStepIndex]
+
                 OnboardingOverlay(
-                    currentStep = onboardingViewModel.currentStep,
+                    currentStep = currentStep,
                     totalSteps = onboardingViewModel.totalSteps,
                     onNextStep = { onboardingViewModel.nextStep() },
                     onPreviousStep = { onboardingViewModel.previousStep() },
