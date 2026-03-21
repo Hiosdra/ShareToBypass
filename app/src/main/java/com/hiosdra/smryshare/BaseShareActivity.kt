@@ -3,8 +3,6 @@ package com.hiosdra.smryshare
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.browser.customtabs.CustomTabsIntent
-import androidx.core.net.toUri
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 
@@ -35,13 +33,6 @@ abstract class BaseShareActivity : ComponentActivity() {
 
     private fun extractUrl(text: String): String? =
         Regex("""https?://[^\s]+""").find(text)?.value
-
-    private fun openInCustomTab(url: String) {
-        CustomTabsIntent.Builder()
-            .setShowTitle(true)
-            .build()
-            .launchUrl(this, url.toUri())
-    }
 
     /**
      * Build the target URL for the specific service.
