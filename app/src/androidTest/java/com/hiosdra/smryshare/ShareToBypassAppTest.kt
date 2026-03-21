@@ -9,6 +9,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.hiosdra.smryshare.onboarding.OnboardingPreferences
 import com.hiosdra.smryshare.onboarding.OnboardingViewModel
 import com.hiosdra.smryshare.ui.theme.ShareToBypassTheme
+import org.junit.After
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -18,6 +19,13 @@ class ShareToBypassAppTest {
 
     @get:Rule
     val composeTestRule = createComposeRule()
+
+    @After
+    fun cleanup() {
+        // Reset onboarding preference after each test to prevent state leakage
+        val preferences = OnboardingPreferences(ApplicationProvider.getApplicationContext())
+        preferences.resetOnboarding()
+    }
 
     @Test
     fun shareToBypassApp_displaysAllContentCorrectly() {

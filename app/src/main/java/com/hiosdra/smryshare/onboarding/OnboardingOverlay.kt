@@ -1,9 +1,8 @@
 package com.hiosdra.smryshare.onboarding
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,6 +22,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -51,26 +51,26 @@ fun OnboardingOverlay(
     onFinish: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    AnimatedVisibility(
-        visible = true,
-        enter = fadeIn(),
-        exit = fadeOut()
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+            .background(Color.Black.copy(alpha = 0.7f))
+            .clickable(
+                indication = null,
+                interactionSource = remember { MutableInteractionSource() }
+            ) {
+                // Consume clicks to prevent touch fall-through to underlying UI
+            },
+        contentAlignment = Alignment.Center
     ) {
-        Box(
-            modifier = modifier
-                .fillMaxSize()
-                .background(Color.Black.copy(alpha = 0.7f)),
-            contentAlignment = Alignment.Center
-        ) {
-            OnboardingCard(
-                currentStep = currentStep,
-                totalSteps = totalSteps,
-                onNextStep = onNextStep,
-                onPreviousStep = onPreviousStep,
-                onSkip = onSkip,
-                onFinish = onFinish
-            )
-        }
+        OnboardingCard(
+            currentStep = currentStep,
+            totalSteps = totalSteps,
+            onNextStep = onNextStep,
+            onPreviousStep = onPreviousStep,
+            onSkip = onSkip,
+            onFinish = onFinish
+        )
     }
 }
 

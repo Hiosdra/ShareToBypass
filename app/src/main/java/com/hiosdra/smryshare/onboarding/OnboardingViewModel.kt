@@ -1,9 +1,13 @@
 package com.hiosdra.smryshare.onboarding
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 
 /**
  * ViewModel for managing the onboarding tutorial state.
@@ -19,10 +23,16 @@ class OnboardingViewModel : ViewModel() {
     val isOnboardingActive: StateFlow<Boolean> = _isOnboardingActive.asStateFlow()
 
     /**
-     * Gets the current step being displayed.
+     * Gets the current step being displayed as a StateFlow.
+     * This is derived from currentStepIndex to ensure proper recomposition.
      */
-    val currentStep: OnboardingStep
-        get() = steps[_currentStepIndex.value]
+    val currentStep: StateFlow<OnboardingStep> = currentStepIndex
+        .map { index -> steps[index] }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = steps[0]
+        )
 
     /**
      * Total number of steps in the tutorial.

@@ -43,7 +43,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hiosdra.smryshare.onboarding.OnboardingOverlay
 import com.hiosdra.smryshare.onboarding.OnboardingPreferences
-import com.hiosdra.smryshare.onboarding.OnboardingSteps
 import com.hiosdra.smryshare.onboarding.OnboardingViewModel
 import com.hiosdra.smryshare.ui.theme.ShareToBypassTheme
 
@@ -75,10 +74,15 @@ fun ShareToBypassApp(
 ) {
     val isOnboardingActive by onboardingViewModel.isOnboardingActive.collectAsState()
     val currentStepIndex by onboardingViewModel.currentStepIndex.collectAsState()
+    val currentStep by onboardingViewModel.currentStep.collectAsState()
 
     // Check if this is the first launch and start onboarding if needed
+    // Only start if not already active and at step 0 to prevent restarting on recomposition
     LaunchedEffect(Unit) {
-        if (!onboardingPreferences.isOnboardingCompleted()) {
+        if (!onboardingPreferences.isOnboardingCompleted() &&
+            !isOnboardingActive &&
+            currentStepIndex == 0
+        ) {
             onboardingViewModel.startOnboarding()
         }
     }
@@ -89,10 +93,6 @@ fun ShareToBypassApp(
 
             // Show onboarding overlay if active
             if (isOnboardingActive) {
-                // Derive the current step from the observed state to ensure recomposition
-                val steps = OnboardingSteps.getAllSteps()
-                val currentStep = steps[currentStepIndex]
-
                 OnboardingOverlay(
                     currentStep = currentStep,
                     totalSteps = onboardingViewModel.totalSteps,

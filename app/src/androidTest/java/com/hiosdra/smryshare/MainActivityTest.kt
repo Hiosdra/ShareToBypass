@@ -7,6 +7,7 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.hiosdra.smryshare.onboarding.OnboardingPreferences
+import org.junit.After
 import org.junit.BeforeClass
 import org.junit.Rule
 import org.junit.Test
@@ -28,6 +29,13 @@ class MainActivityTest {
 
     @get:Rule
     val composeTestRule = createAndroidComposeRule<MainActivity>()
+
+    @After
+    fun cleanup() {
+        // Reset onboarding preference after each test to prevent state leakage
+        val preferences = OnboardingPreferences(ApplicationProvider.getApplicationContext())
+        preferences.resetOnboarding()
+    }
 
     @Test
     fun appLaunchesSuccessfully() {

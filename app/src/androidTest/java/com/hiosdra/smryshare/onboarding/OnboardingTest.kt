@@ -1,5 +1,6 @@
 package com.hiosdra.smryshare.onboarding
 
+import androidx.compose.ui.test.assertDoesNotExist
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
@@ -30,7 +31,7 @@ class OnboardingTest {
         composeTestRule.setContent {
             ShareToBypassTheme {
                 OnboardingOverlay(
-                    currentStep = viewModel.currentStep,
+                    currentStep = viewModel.currentStep.value,
                     totalSteps = viewModel.totalSteps,
                     onNextStep = { viewModel.nextStep() },
                     onPreviousStep = { viewModel.previousStep() },
@@ -55,7 +56,7 @@ class OnboardingTest {
 
         assertEquals(0, viewModel.currentStepIndex.value)
         assertTrue(viewModel.isOnboardingActive.value)
-        assertEquals(1, viewModel.currentStep.stepNumber)
+        assertEquals(1, viewModel.currentStep.value.stepNumber)
     }
 
     @Test
@@ -66,7 +67,7 @@ class OnboardingTest {
         viewModel.nextStep()
 
         assertEquals(1, viewModel.currentStepIndex.value)
-        assertEquals(2, viewModel.currentStep.stepNumber)
+        assertEquals(2, viewModel.currentStep.value.stepNumber)
     }
 
     @Test
@@ -78,7 +79,7 @@ class OnboardingTest {
         viewModel.previousStep()
 
         assertEquals(0, viewModel.currentStepIndex.value)
-        assertEquals(1, viewModel.currentStep.stepNumber)
+        assertEquals(1, viewModel.currentStep.value.stepNumber)
     }
 
     @Test
@@ -123,7 +124,7 @@ class OnboardingTest {
         composeTestRule.setContent {
             ShareToBypassTheme {
                 OnboardingOverlay(
-                    currentStep = viewModel.currentStep,
+                    currentStep = viewModel.currentStep.value,
                     totalSteps = viewModel.totalSteps,
                     onNextStep = { viewModel.nextStep() },
                     onPreviousStep = { viewModel.previousStep() },
@@ -154,7 +155,7 @@ class OnboardingTest {
         composeTestRule.setContent {
             ShareToBypassTheme {
                 OnboardingOverlay(
-                    currentStep = viewModel.currentStep,
+                    currentStep = viewModel.currentStep.value,
                     totalSteps = viewModel.totalSteps,
                     onNextStep = { viewModel.nextStep() },
                     onPreviousStep = { viewModel.previousStep() },
@@ -176,7 +177,7 @@ class OnboardingTest {
         composeTestRule.setContent {
             ShareToBypassTheme {
                 OnboardingOverlay(
-                    currentStep = viewModel.currentStep,
+                    currentStep = viewModel.currentStep.value,
                     totalSteps = viewModel.totalSteps,
                     onNextStep = { viewModel.nextStep() },
                     onPreviousStep = { viewModel.previousStep() },
@@ -199,7 +200,7 @@ class OnboardingTest {
         composeTestRule.setContent {
             ShareToBypassTheme {
                 OnboardingOverlay(
-                    currentStep = viewModel.currentStep,
+                    currentStep = viewModel.currentStep.value,
                     totalSteps = viewModel.totalSteps,
                     onNextStep = { viewModel.nextStep() },
                     onPreviousStep = { viewModel.previousStep() },
