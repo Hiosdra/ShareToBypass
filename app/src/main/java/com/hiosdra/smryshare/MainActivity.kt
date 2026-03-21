@@ -73,6 +73,7 @@ fun ShareToBypassApp(
     onboardingPreferences: OnboardingPreferences
 ) {
     val isOnboardingActive by onboardingViewModel.isOnboardingActive.collectAsState()
+    val currentStepIndex by onboardingViewModel.currentStepIndex.collectAsState()
 
     // Check if this is the first launch and start onboarding if needed
     LaunchedEffect(Unit) {
