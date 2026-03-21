@@ -30,7 +30,7 @@ class OnboardingViewModel : ViewModel() {
         .map { index -> steps[index] }
         .stateIn(
             scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5000),
+            started = SharingStarted.Eagerly,
             initialValue = steps[0]
         )
 
