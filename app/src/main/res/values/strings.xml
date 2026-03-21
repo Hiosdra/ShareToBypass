@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Share to bypass</string>
     <string name="privacy_policy">Privacy Policy</string>
-    <string name="privacy_policy_url" translatable="false">https://github.com/Hiosdra/ShareToBypass/blob/main/PRIVACY_POLICY.md</string>
+    <string name="privacy_policy_url" translatable="false">https://github.com/Hiosdra/ShareToBypass/blob/master/PRIVACY_POLICY.md</string>
 </resources>
