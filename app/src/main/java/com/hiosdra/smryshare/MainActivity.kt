@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,30 +27,77 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.hiosdra.smryshare.onboarding.OnboardingOverlay
+import com.hiosdra.smryshare.onboarding.OnboardingPreferences
+import com.hiosdra.smryshare.onboarding.OnboardingViewModel
 import com.hiosdra.smryshare.ui.theme.ShareToBypassTheme
 
 class MainActivity : ComponentActivity() {
+    private val onboardingViewModel: OnboardingViewModel by viewModels()
+    private lateinit var onboardingPreferences: OnboardingPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        onboardingPreferences = OnboardingPreferences(this)
+
         setContent {
             ShareToBypassTheme {
-                ShareToBypassApp()
+                ShareToBypassApp(
+                    onboardingViewModel = onboardingViewModel,
+                    onboardingPreferences = onboardingPreferences
+                )
             }
         }
     }
 }
 
 @Composable
-fun ShareToBypassApp() {
+fun ShareToBypassApp(
+    onboardingViewModel: OnboardingViewModel,
+    onboardingPreferences: OnboardingPreferences
+) {
+    val isOnboardingActive by onboardingViewModel.isOnboardingActive.collectAsState()
+
+    // Check if this is the first launch and start onboarding if needed
+    LaunchedEffect(Unit) {
+        if (!onboardingPreferences.isOnboardingCompleted()) {
+            onboardingViewModel.startOnboarding()
+        }
+    }
+
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        HomeScreen(modifier = Modifier.padding(innerPadding))
+        Box(modifier = Modifier.padding(innerPadding)) {
+            HomeScreen()
+
+            // Show onboarding overlay if active
+            if (isOnboardingActive) {
+                OnboardingOverlay(
+                    currentStep = onboardingViewModel.currentStep,
+                    totalSteps = onboardingViewModel.totalSteps,
+                    onNextStep = { onboardingViewModel.nextStep() },
+                    onPreviousStep = { onboardingViewModel.previousStep() },
+                    onSkip = {
+                        onboardingViewModel.skipOnboarding()
+                        onboardingPreferences.setOnboardingCompleted()
+                    },
+                    onFinish = {
+                        onboardingViewModel.finishOnboarding()
+                        onboardingPreferences.setOnboardingCompleted()
+                    }
+                )
+            }
+        }
     }
 }
 
