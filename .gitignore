@@ -22,3 +22,6 @@ app-release.aab
 # Auto-generated What's New notes
 whatsnew/whatsnew-*
 
+
+# Local MCP config (machine-specific paths)
+.mcp.json
