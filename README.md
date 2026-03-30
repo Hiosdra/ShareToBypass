@@ -2,6 +2,8 @@
 
 An Android app that allows you to share links from any app and open them in paywall bypass services or article summarizers.
 
+[<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" height="80">](https://play.google.com/store/apps/details?id=com.hiosdra.smryshare&hl=en)
+
 ## Features
 
 - 🔗 **Multiple sharing options** - Choose from 4 different services:
