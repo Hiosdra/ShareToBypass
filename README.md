@@ -16,8 +16,6 @@ An Android app that allows you to share links from any app and open them in payw
   - **Wayback Machine** ([web.archive.org](https://web.archive.org)) - Internet Archive's snapshot service
   - **Bypass Paywall Reader** ([bypasspaywallreader.com](https://www.bypasspaywallreader.com)) - Tries 6 different bypass methods
 
-  > All services above have been manually verified to open the shared article directly. (PaywallReader was tried and removed after testing showed the site no longer works; see `docs/adr/0001-supported-share-target-services.md` for the full analysis of considered and rejected services.)
-
 - 🚀 **Quick sharing** - Share any link from Chrome or other apps directly to bypass services
 - 🔒 **Secure** - Opens links in Chrome Custom Tabs for better security
 - 🎨 **Material Design 3** - Modern, clean UI with dynamic theming
