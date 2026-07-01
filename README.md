@@ -6,11 +6,15 @@ An Android app that allows you to share links from any app and open them in payw
 
 ## Features
 
-- 🔗 **Multiple sharing options** - Choose from 4 different services:
-  - **Smry.ai** - AI-powered article summarization
-  - **RemovePaywall (search)** - Paywall removal with search
-  - **RemovePaywalls.com** - Direct paywall bypass
-  - **PaywallBuster** - Advanced paywall removal
+- 🔗 **Multiple sharing options** - Choose from 8 different services:
+  - **Smry.ai** ([smry.ai](https://smry.ai)) - Unlocks articles and generates AI summaries; also offers a reader mode and text-to-speech
+  - **RemovePaywall (search)** ([removepaywall.com](https://www.removepaywall.com)) - Searches removepaywall.com's own archive/search engine for a cached copy of the article
+  - **RemovePaywalls.com** ([removepaywalls.com](https://removepaywalls.com)) - A separate, similar site that tries multiple archive sources (Wayback Machine, Google Cache, etc.) directly by URL
+  - **PaywallBuster** ([paywallbuster.com](https://paywallbuster.com)) - Advanced paywall removal
+  - **Archive.ph** ([archive.ph](https://archive.ph)) - Opens the most reliable, permanent snapshot of the page, bypassing paywalls via search-engine bots
+  - **Archive Buttons** ([archivebuttons.com](https://www.archivebuttons.com)) - Aggregates several archive/paywall-removal sources into one URL
+  - **Wayback Machine** ([web.archive.org](https://web.archive.org)) - Internet Archive's snapshot service
+  - **Bypass Paywall Reader** ([bypasspaywallreader.com](https://www.bypasspaywallreader.com)) - Tries 6 different bypass methods
 
 - 🚀 **Quick sharing** - Share any link from Chrome or other apps directly to bypass services
 - 🔒 **Secure** - Opens links in Chrome Custom Tabs for better security

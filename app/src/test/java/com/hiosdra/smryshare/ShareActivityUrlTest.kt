@@ -37,7 +37,7 @@ class ShareActivityUrlTest {
     fun removePaywallsShareActivity_buildsCorrectUrl() {
         val testUrl = "https://example.com/article"
         val result = RemovePaywallsUrlBuilder.buildTargetUrl(testUrl)
-        assertEquals("https://removepaywall.com/$testUrl", result)
+        assertEquals("https://removepaywalls.com/$testUrl", result)
     }
 
     @Test
@@ -55,17 +55,63 @@ class ShareActivityUrlTest {
     }
 
     @Test
+    fun archivePhShareActivity_buildsCorrectUrl() {
+        val testUrl = "https://example.com/article"
+        val result = ArchivePhUrlBuilder.buildTargetUrl(testUrl)
+        assertEquals("https://archive.ph/newest/$testUrl", result)
+    }
+
+    @Test
+    fun waybackMachineShareActivity_buildsCorrectUrl() {
+        val testUrl = "https://example.com/article"
+        val result = WaybackMachineUrlBuilder.buildTargetUrl(testUrl)
+        assertEquals("https://web.archive.org/web/2/$testUrl", result)
+    }
+
+    @Test
+    fun archiveButtonsShareActivity_buildsCorrectUrl() {
+        val testUrl = "https://example.com/article"
+        val result = ArchiveButtonsUrlBuilder.buildTargetUrl(testUrl)
+        assertEquals("https://www.archivebuttons.com/articles?article=${encodeUrl(testUrl)}", result)
+    }
+
+    @Test
+    fun archiveButtonsShareActivity_encodesSpecialCharacters() {
+        val testUrl = "https://example.com/article?id=123&section=news"
+        val result = ArchiveButtonsUrlBuilder.buildTargetUrl(testUrl)
+        assertEquals("https://www.archivebuttons.com/articles?article=${encodeUrl(testUrl)}", result)
+    }
+
+    @Test
+    fun bypassPaywallReaderShareActivity_buildsCorrectUrl() {
+        val testUrl = "https://example.com/article"
+        val result = BypassPaywallReaderUrlBuilder.buildTargetUrl(testUrl)
+        assertEquals("https://www.bypasspaywallreader.com/?url=${encodeUrl(testUrl)}", result)
+    }
+
+    @Test
+    fun bypassPaywallReaderShareActivity_encodesSpecialCharacters() {
+        val testUrl = "https://example.com/article?id=123&section=news"
+        val result = BypassPaywallReaderUrlBuilder.buildTargetUrl(testUrl)
+        assertEquals("https://www.bypasspaywallreader.com/?url=${encodeUrl(testUrl)}", result)
+    }
+
+    @Test
     fun allActivities_handleHttpsUrls() {
         val testUrl = "https://secure-site.com/premium-content"
         assertEquals("https://smry.ai/$testUrl", SmryAiUrlBuilder.buildTargetUrl(testUrl))
-        assertEquals("https://removepaywall.com/$testUrl", RemovePaywallsUrlBuilder.buildTargetUrl(testUrl))
+        assertEquals("https://removepaywalls.com/$testUrl", RemovePaywallsUrlBuilder.buildTargetUrl(testUrl))
+        assertEquals("https://archive.ph/newest/$testUrl", ArchivePhUrlBuilder.buildTargetUrl(testUrl))
+        assertEquals("https://web.archive.org/web/2/$testUrl", WaybackMachineUrlBuilder.buildTargetUrl(testUrl))
     }
 
     @Test
     fun allActivities_handleHttpUrls() {
         val testUrl = "http://old-site.com/article"
         assertEquals("https://smry.ai/$testUrl", SmryAiUrlBuilder.buildTargetUrl(testUrl))
-        assertEquals("https://removepaywall.com/$testUrl", RemovePaywallsUrlBuilder.buildTargetUrl(testUrl))
+        assertEquals("https://removepaywalls.com/$testUrl", RemovePaywallsUrlBuilder.buildTargetUrl(testUrl))
+        assertEquals("https://archive.ph/newest/$testUrl", ArchivePhUrlBuilder.buildTargetUrl(testUrl))
+        assertEquals("https://web.archive.org/web/2/$testUrl", WaybackMachineUrlBuilder.buildTargetUrl(testUrl))
     }
 
     // Test wrappers that expose URL building logic without activity lifecycle
@@ -79,12 +125,30 @@ class ShareActivityUrlTest {
     }
 
     private object RemovePaywallsUrlBuilder {
-        fun buildTargetUrl(url: String): String = "https://removepaywall.com/$url"
+        fun buildTargetUrl(url: String): String = "https://removepaywalls.com/$url"
     }
 
     private object PaywallBusterUrlBuilder {
         fun buildTargetUrl(url: String): String =
             "https://paywallbuster.com/articles?article=${encodeUrl(url)}"
+    }
+
+    private object ArchivePhUrlBuilder {
+        fun buildTargetUrl(url: String): String = "https://archive.ph/newest/$url"
+    }
+
+    private object WaybackMachineUrlBuilder {
+        fun buildTargetUrl(url: String): String = "https://web.archive.org/web/2/$url"
+    }
+
+    private object ArchiveButtonsUrlBuilder {
+        fun buildTargetUrl(url: String): String =
+            "https://www.archivebuttons.com/articles?article=${encodeUrl(url)}"
+    }
+
+    private object BypassPaywallReaderUrlBuilder {
+        fun buildTargetUrl(url: String): String =
+            "https://www.bypasspaywallreader.com/?url=${encodeUrl(url)}"
     }
 }
 
