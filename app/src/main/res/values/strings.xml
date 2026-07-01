@@ -2,4 +2,11 @@
     <string name="app_name">Share to bypass</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="privacy_policy_url" translatable="false">https://github.com/Hiosdra/ShareToBypass/blob/master/PRIVACY_POLICY.md</string>
+
+    <string name="label_smry_ai">Open in Smry.ai</string>
+    <string name="label_remove_paywall_search">Remove Paywall (search)</string>
+    <string name="label_remove_paywalls_com">RemovePaywalls.com</string>
+    <string name="label_paywall_buster">PaywallBuster</string>
+    <string name="label_archive_ph">Archive.ph</string>
+    <string name="label_paywall_reader">PaywallReader</string>
 </resources>

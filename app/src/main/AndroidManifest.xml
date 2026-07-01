@@ -27,7 +27,7 @@
         <activity
                 android:name=".SmryAiShareActivity"
                 android:exported="true"
-                android:label="Open in Smry.ai"
+                android:label="@string/label_smry_ai"
                 android:theme="@android:style/Theme.Translucent.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
@@ -38,7 +38,7 @@
         <activity
                 android:name=".RemovePaywallShareActivity"
                 android:exported="true"
-                android:label="Remove Paywall (search)"
+                android:label="@string/label_remove_paywall_search"
                 android:theme="@android:style/Theme.Translucent.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
@@ -49,7 +49,7 @@
         <activity
                 android:name=".RemovePaywallsShareActivity"
                 android:exported="true"
-                android:label="RemovePaywalls.com"
+                android:label="@string/label_remove_paywalls_com"
                 android:theme="@android:style/Theme.Translucent.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
@@ -60,7 +60,7 @@
         <activity
                 android:name=".PaywallBusterShareActivity"
                 android:exported="true"
-                android:label="PaywallBuster"
+                android:label="@string/label_paywall_buster"
                 android:theme="@android:style/Theme.Translucent.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
@@ -71,7 +71,7 @@
         <activity
                 android:name=".ArchivePhShareActivity"
                 android:exported="true"
-                android:label="Archive.ph"
+                android:label="@string/label_archive_ph"
                 android:theme="@android:style/Theme.Translucent.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
@@ -82,7 +82,7 @@
         <activity
                 android:name=".PaywallReaderShareActivity"
                 android:exported="true"
-                android:label="PaywallReader"
+                android:label="@string/label_paywall_reader"
                 android:theme="@android:style/Theme.Translucent.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
