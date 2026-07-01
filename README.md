@@ -6,11 +6,13 @@ An Android app that allows you to share links from any app and open them in payw
 
 ## Features
 
-- 🔗 **Multiple sharing options** - Choose from 4 different services:
+- 🔗 **Multiple sharing options** - Choose from 6 different services:
   - **Smry.ai** - AI-powered article summarization
   - **RemovePaywall (search)** - Paywall removal with search
   - **RemovePaywalls.com** - Direct paywall bypass
   - **PaywallBuster** - Advanced paywall removal
+  - **Archive.ph** - Permanent page snapshots via search engine bots
+  - **PaywallReader** - Aggregates several bypass methods in one place
 
 - 🚀 **Quick sharing** - Share any link from Chrome or other apps directly to bypass services
 - 🔒 **Secure** - Opens links in Chrome Custom Tabs for better security

@@ -55,10 +55,32 @@ class ShareActivityUrlTest {
     }
 
     @Test
+    fun archivePhShareActivity_buildsCorrectUrl() {
+        val testUrl = "https://example.com/article"
+        val result = ArchivePhUrlBuilder.buildTargetUrl(testUrl)
+        assertEquals("https://archive.ph/newest/$testUrl", result)
+    }
+
+    @Test
+    fun paywallReaderShareActivity_buildsCorrectUrl() {
+        val testUrl = "https://example.com/article"
+        val result = PaywallReaderUrlBuilder.buildTargetUrl(testUrl)
+        assertEquals("https://paywallreader.com/search?url=${encodeUrl(testUrl)}", result)
+    }
+
+    @Test
+    fun paywallReaderShareActivity_encodesSpecialCharacters() {
+        val testUrl = "https://example.com/article?id=123&section=news"
+        val result = PaywallReaderUrlBuilder.buildTargetUrl(testUrl)
+        assertEquals("https://paywallreader.com/search?url=${encodeUrl(testUrl)}", result)
+    }
+
+    @Test
     fun allActivities_handleHttpsUrls() {
         val testUrl = "https://secure-site.com/premium-content"
         assertEquals("https://smry.ai/$testUrl", SmryAiUrlBuilder.buildTargetUrl(testUrl))
         assertEquals("https://removepaywall.com/$testUrl", RemovePaywallsUrlBuilder.buildTargetUrl(testUrl))
+        assertEquals("https://archive.ph/newest/$testUrl", ArchivePhUrlBuilder.buildTargetUrl(testUrl))
     }
 
     @Test
@@ -66,6 +88,7 @@ class ShareActivityUrlTest {
         val testUrl = "http://old-site.com/article"
         assertEquals("https://smry.ai/$testUrl", SmryAiUrlBuilder.buildTargetUrl(testUrl))
         assertEquals("https://removepaywall.com/$testUrl", RemovePaywallsUrlBuilder.buildTargetUrl(testUrl))
+        assertEquals("https://archive.ph/newest/$testUrl", ArchivePhUrlBuilder.buildTargetUrl(testUrl))
     }
 
     // Test wrappers that expose URL building logic without activity lifecycle
@@ -85,6 +108,15 @@ class ShareActivityUrlTest {
     private object PaywallBusterUrlBuilder {
         fun buildTargetUrl(url: String): String =
             "https://paywallbuster.com/articles?article=${encodeUrl(url)}"
+    }
+
+    private object ArchivePhUrlBuilder {
+        fun buildTargetUrl(url: String): String = "https://archive.ph/newest/$url"
+    }
+
+    private object PaywallReaderUrlBuilder {
+        fun buildTargetUrl(url: String): String =
+            "https://paywallreader.com/search?url=${encodeUrl(url)}"
     }
 }
 
