@@ -8,8 +8,7 @@
     <string name="label_remove_paywalls_com">RemovePaywalls.com</string>
     <string name="label_paywall_buster">PaywallBuster</string>
     <string name="label_archive_ph">Archive.ph</string>
-    <string name="label_paywall_reader">PaywallReader</string>
     <string name="label_wayback_machine">Wayback Machine (unverified)</string>
-    <string name="label_archive_buttons">Archive Buttons (unverified)</string>
+    <string name="label_archive_buttons">Archive Buttons</string>
     <string name="label_bypass_paywall_reader">Bypass Paywall Reader (unverified)</string>
 </resources>

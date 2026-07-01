@@ -62,20 +62,6 @@ class ShareActivityUrlTest {
     }
 
     @Test
-    fun paywallReaderShareActivity_buildsCorrectUrl() {
-        val testUrl = "https://example.com/article"
-        val result = PaywallReaderUrlBuilder.buildTargetUrl(testUrl)
-        assertEquals("https://paywallreader.com/search?url=${encodeUrl(testUrl)}", result)
-    }
-
-    @Test
-    fun paywallReaderShareActivity_encodesSpecialCharacters() {
-        val testUrl = "https://example.com/article?id=123&section=news"
-        val result = PaywallReaderUrlBuilder.buildTargetUrl(testUrl)
-        assertEquals("https://paywallreader.com/search?url=${encodeUrl(testUrl)}", result)
-    }
-
-    @Test
     fun waybackMachineShareActivity_buildsCorrectUrl() {
         val testUrl = "https://example.com/article"
         val result = WaybackMachineUrlBuilder.buildTargetUrl(testUrl)
@@ -86,14 +72,14 @@ class ShareActivityUrlTest {
     fun archiveButtonsShareActivity_buildsCorrectUrl() {
         val testUrl = "https://example.com/article"
         val result = ArchiveButtonsUrlBuilder.buildTargetUrl(testUrl)
-        assertEquals("https://www.archivebuttons.com/?url=${encodeUrl(testUrl)}", result)
+        assertEquals("https://www.archivebuttons.com/articles?article=${encodeUrl(testUrl)}", result)
     }
 
     @Test
     fun archiveButtonsShareActivity_encodesSpecialCharacters() {
         val testUrl = "https://example.com/article?id=123&section=news"
         val result = ArchiveButtonsUrlBuilder.buildTargetUrl(testUrl)
-        assertEquals("https://www.archivebuttons.com/?url=${encodeUrl(testUrl)}", result)
+        assertEquals("https://www.archivebuttons.com/articles?article=${encodeUrl(testUrl)}", result)
     }
 
     @Test
@@ -151,18 +137,13 @@ class ShareActivityUrlTest {
         fun buildTargetUrl(url: String): String = "https://archive.ph/newest/$url"
     }
 
-    private object PaywallReaderUrlBuilder {
-        fun buildTargetUrl(url: String): String =
-            "https://paywallreader.com/search?url=${encodeUrl(url)}"
-    }
-
     private object WaybackMachineUrlBuilder {
         fun buildTargetUrl(url: String): String = "https://web.archive.org/web/2/$url"
     }
 
     private object ArchiveButtonsUrlBuilder {
         fun buildTargetUrl(url: String): String =
-            "https://www.archivebuttons.com/?url=${encodeUrl(url)}"
+            "https://www.archivebuttons.com/articles?article=${encodeUrl(url)}"
     }
 
     private object BypassPaywallReaderUrlBuilder {

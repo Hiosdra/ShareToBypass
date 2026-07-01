@@ -80,17 +80,6 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".PaywallReaderShareActivity"
-                android:exported="true"
-                android:label="@string/label_paywall_reader"
-                android:theme="@android:style/Theme.Translucent.NoTitleBar">
-            <intent-filter>
-                <action android:name="android.intent.action.SEND" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="text/plain" />
-            </intent-filter>
-        </activity>
-        <activity
                 android:name=".WaybackMachineShareActivity"
                 android:exported="true"
                 android:label="@string/label_wayback_machine"

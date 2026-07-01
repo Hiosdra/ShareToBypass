@@ -6,18 +6,17 @@ An Android app that allows you to share links from any app and open them in payw
 
 ## Features
 
-- 🔗 **Multiple sharing options** - Choose from 9 different services:
+- 🔗 **Multiple sharing options** - Choose from 8 different services:
   - **Smry.ai** ([smry.ai](https://smry.ai)) - Unlocks articles and generates AI summaries; also offers a reader mode and text-to-speech
   - **RemovePaywall (search)** ([removepaywall.com](https://www.removepaywall.com)) - Searches removepaywall.com's own archive/search engine for a cached copy of the article
   - **RemovePaywalls.com** ([removepaywalls.com](https://removepaywalls.com)) - A separate, similar site that tries multiple archive sources (Wayback Machine, Google Cache, etc.) directly by URL
   - **PaywallBuster** ([paywallbuster.com](https://paywallbuster.com)) - Advanced paywall removal
   - **Archive.ph** ([archive.ph](https://archive.ph)) - Opens the most reliable, permanent snapshot of the page, bypassing paywalls via search-engine bots
-  - **PaywallReader** ([paywallreader.com](https://paywallreader.com)) - Aggregates several bypass methods (including Archive and Google Cache) in one place, so you don't have to try them one by one
+  - **Archive Buttons** ([archivebuttons.com](https://www.archivebuttons.com)) - Aggregates several archive/paywall-removal sources into one URL
   - **Wayback Machine** ([web.archive.org](https://web.archive.org)) *(unverified)* - Internet Archive's snapshot service; URL format is not yet confirmed against the live site
-  - **Archive Buttons** ([archivebuttons.com](https://www.archivebuttons.com)) *(unverified)* - Aggregates several archive/paywall-removal sources; URL format is not yet confirmed against the live site
   - **Bypass Paywall Reader** ([bypasspaywallreader.com](https://www.bypasspaywallreader.com)) *(unverified)* - Tries 6 different bypass methods; URL format is not yet confirmed against the live site
 
-  > The three services marked *(unverified)* were added with a best-guess URL format because the live sites could not be reached from the development environment to confirm the exact query parameter. Their share-sheet labels include "(unverified)" until someone confirms the link opens the article directly rather than just the service's homepage.
+  > The services marked *(unverified)* were added with a best-guess URL format because the live sites could not be reached from the development environment to confirm the exact query parameter. Their share-sheet labels include "(unverified)" until someone confirms the link opens the article directly rather than just the service's homepage. (PaywallReader was tried and removed after testing showed the site no longer works.)
 
 - 🚀 **Quick sharing** - Share any link from Chrome or other apps directly to bypass services
 - 🔒 **Secure** - Opens links in Chrome Custom Tabs for better security
