@@ -37,7 +37,7 @@ class ShareActivityUrlTest {
     fun removePaywallsShareActivity_buildsCorrectUrl() {
         val testUrl = "https://example.com/article"
         val result = RemovePaywallsUrlBuilder.buildTargetUrl(testUrl)
-        assertEquals("https://removepaywall.com/$testUrl", result)
+        assertEquals("https://removepaywalls.com/$testUrl", result)
     }
 
     @Test
@@ -79,7 +79,7 @@ class ShareActivityUrlTest {
     fun allActivities_handleHttpsUrls() {
         val testUrl = "https://secure-site.com/premium-content"
         assertEquals("https://smry.ai/$testUrl", SmryAiUrlBuilder.buildTargetUrl(testUrl))
-        assertEquals("https://removepaywall.com/$testUrl", RemovePaywallsUrlBuilder.buildTargetUrl(testUrl))
+        assertEquals("https://removepaywalls.com/$testUrl", RemovePaywallsUrlBuilder.buildTargetUrl(testUrl))
         assertEquals("https://archive.ph/newest/$testUrl", ArchivePhUrlBuilder.buildTargetUrl(testUrl))
     }
 
@@ -87,7 +87,7 @@ class ShareActivityUrlTest {
     fun allActivities_handleHttpUrls() {
         val testUrl = "http://old-site.com/article"
         assertEquals("https://smry.ai/$testUrl", SmryAiUrlBuilder.buildTargetUrl(testUrl))
-        assertEquals("https://removepaywall.com/$testUrl", RemovePaywallsUrlBuilder.buildTargetUrl(testUrl))
+        assertEquals("https://removepaywalls.com/$testUrl", RemovePaywallsUrlBuilder.buildTargetUrl(testUrl))
         assertEquals("https://archive.ph/newest/$testUrl", ArchivePhUrlBuilder.buildTargetUrl(testUrl))
     }
 
@@ -102,7 +102,7 @@ class ShareActivityUrlTest {
     }
 
     private object RemovePaywallsUrlBuilder {
-        fun buildTargetUrl(url: String): String = "https://removepaywall.com/$url"
+        fun buildTargetUrl(url: String): String = "https://removepaywalls.com/$url"
     }
 
     private object PaywallBusterUrlBuilder {
