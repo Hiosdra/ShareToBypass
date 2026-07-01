@@ -8,7 +8,7 @@
     <string name="label_remove_paywalls_com">removepaywalls.com</string>
     <string name="label_paywall_buster">paywallbuster.com</string>
     <string name="label_archive_ph">archive.ph</string>
-    <string name="label_wayback_machine">web.archive.org (unverified)</string>
+    <string name="label_wayback_machine">web.archive.org</string>
     <string name="label_archive_buttons">archivebuttons.com</string>
-    <string name="label_bypass_paywall_reader">bypasspaywallreader.com (unverified)</string>
+    <string name="label_bypass_paywall_reader">bypasspaywallreader.com</string>
 </resources>

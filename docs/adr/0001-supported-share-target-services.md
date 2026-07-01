@@ -30,8 +30,8 @@ tested to confirm the assumption above before being wired into the app.
 | PaywallBuster | `https://paywallbuster.com/articles?article=<url>` | Pre-existing, in production |
 | Archive.ph | `https://archive.ph/newest/<url>` | Confirmed working |
 | Archive Buttons | `https://www.archivebuttons.com/articles?article=<url>` | Confirmed working via manual test (2026-07-01); initial guess of `/?url=<url>` was wrong |
-| Wayback Machine | `https://web.archive.org/web/2/<url>` | **Unverified** — `2` is a commonly cited community shorthand for "redirect to latest capture," not yet confirmed against the live site. Share-sheet label is suffixed "(unverified)" until confirmed. |
-| Bypass Paywall Reader | `https://www.bypasspaywallreader.com/?url=<url>` | **Unverified** — guessed by convention with other single-box tools, not yet confirmed. Share-sheet label is suffixed "(unverified)" until confirmed. |
+| Wayback Machine | `https://web.archive.org/web/2/<url>` | Confirmed working via manual test (2026-07-01) |
+| Bypass Paywall Reader | `https://www.bypasspaywallreader.com/?url=<url>` | Confirmed working via manual test (2026-07-01) |
 
 ### Analyzed and rejected (not implemented)
 
@@ -46,11 +46,8 @@ tested to confirm the assumption above before being wired into the app.
 
 ## Consequences
 
-- Two share targets (Wayback Machine, Bypass Paywall Reader) are shipped with
-  best-guess URL formats and a visible "(unverified)" label until someone
-  manually confirms the link opens the article directly. If confirmed
-  incorrect, either fix the URL format in the corresponding `*ShareActivity`
-  class or remove the activity (see the PaywallReader precedent above).
+- All eight supported share targets have been manually confirmed to open the
+  shared article directly rather than just the service's homepage.
 - If a currently-supported service goes offline or changes its URL scheme in
   the future, follow the same pattern used for PaywallReader: verify first,
   then remove the activity, its manifest entry, its string resource, and its
