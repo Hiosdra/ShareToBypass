@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.hiosdra.smryshare"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.hiosdra.smryshare"
