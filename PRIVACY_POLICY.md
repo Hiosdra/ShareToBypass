@@ -29,7 +29,7 @@ The app only requests the minimum permissions necessary to function:
 
 ## Third-Party Services
 
-When you use this app to share links, you are redirected to third-party paywall bypass services (Smry.ai, RemovePaywall, RemovePaywalls.com, PaywallBuster, Archive.ph, or PaywallReader). Each of these services has its own privacy policy, and we are not responsible for their data practices.
+When you use this app to share links, you are redirected to third-party paywall bypass services (Smry.ai, RemovePaywall, RemovePaywalls.com, PaywallBuster, Archive.ph, PaywallReader, Wayback Machine, Archive Buttons, or Bypass Paywall Reader). Each of these services has its own privacy policy, and we are not responsible for their data practices.
 
 ## Changes to This Privacy Policy
 
