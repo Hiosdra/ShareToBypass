@@ -3,12 +3,12 @@
     <string name="privacy_policy">Privacy Policy</string>
     <string name="privacy_policy_url" translatable="false">https://github.com/Hiosdra/ShareToBypass/blob/master/PRIVACY_POLICY.md</string>
 
-    <string name="label_smry_ai">smry.ai</string>
-    <string name="label_remove_paywall_search">removepaywall.com</string>
-    <string name="label_remove_paywalls_com">removepaywalls.com</string>
-    <string name="label_paywall_buster">paywallbuster.com</string>
-    <string name="label_archive_ph">archive.ph</string>
-    <string name="label_wayback_machine">web.archive.org</string>
-    <string name="label_archive_buttons">archivebuttons.com</string>
-    <string name="label_bypass_paywall_reader">bypasspaywallreader.com</string>
+    <string name="label_smry_ai" translatable="false">smry.ai</string>
+    <string name="label_remove_paywall_search" translatable="false">removepaywall.com</string>
+    <string name="label_remove_paywalls_com" translatable="false">removepaywalls.com</string>
+    <string name="label_paywall_buster" translatable="false">paywallbuster.com</string>
+    <string name="label_archive_ph" translatable="false">archive.ph</string>
+    <string name="label_wayback_machine" translatable="false">web.archive.org</string>
+    <string name="label_archive_buttons" translatable="false">archivebuttons.com</string>
+    <string name="label_bypass_paywall_reader" translatable="false">bypasspaywallreader.com</string>
 </resources>
