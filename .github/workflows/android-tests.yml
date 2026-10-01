@@ -19,7 +19,7 @@ jobs:
           java-version: '17'
 
       - name: Gradle cache
-        uses: gradle/actions/setup-gradle@v6
+        uses: gradle/actions/setup-gradle@v6.2.0
 
       - name: Enable KVM
         run: |
